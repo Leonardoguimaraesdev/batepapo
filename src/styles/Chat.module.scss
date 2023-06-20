@@ -1,0 +1,87 @@
+.chatContainer {
+    height: 600px;
+    width: 420px;
+    background-color: #fff;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.3);
+
+    ::-webkit-scrollbar {
+        width: 5px;
+        /* largura da barra de rolagem */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #555;
+        /* cor da alça da barra de rolagem */
+        border-radius: 5px;
+        /* raio de borda da alça da barra de rolagem */
+    }
+}
+
+.chatBody {
+    position: relative;
+    padding: 10px 10px 0px 10px;
+    height: 550px;
+    overflow-y: auto;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+
+    input {
+        height: 25px;
+        padding: 8px;
+        width: 90%;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+
+        &:focus {
+            outline: none;
+        }
+
+    }
+}
+
+.messageContainer {
+    width: 150px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    word-wrap: break-word;
+
+}
+
+.messageAuthor {
+    font-weight: 700;
+}
+
+.messageText {
+    margin-top: 5px;
+    font-size: 0.8rem;
+}
+
+.send {
+    background-color: rgb(75, 219, 255);
+    margin-left: 220px;
+}
+
+.receive {
+    background-color: #747373;
+    margin-right: 120px;
+}
+
+.iconSend {
+    width: 22px;
+    margin-left: 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
