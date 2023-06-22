@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "server": "nodemon /Trabalho/Programação/Projetos/nextjs-batepapo/batepapo/src/pages/api/server.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -11,10 +12,13 @@
   "dependencies": {
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.6",
+    "express": "^4.18.2",
     "next": "13.4.6",
+    "nodemon": "^2.0.22",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.63.4",
+    "socket.io": "^4.7.0",
     "socket.io-client": "^4.6.2"
   }
 }
