@@ -9,6 +9,7 @@ export default function Chat({ socket }) {
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
+      console.log('Recebi o nome e as mensagens')
       setMessageList((current) => [...current, data]);
     });
 
@@ -23,6 +24,7 @@ export default function Chat({ socket }) {
     if (!message.trim()) return;
 
     socket.emit("message", message);
+    console.log('Enviei')
     clearInput();
     focusInput();
   };

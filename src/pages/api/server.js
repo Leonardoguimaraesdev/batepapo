@@ -7,8 +7,9 @@ const server = http.createServer(app);
 const io = socketIO(server, { cors: { origin: '*' } });
 
 const PORT = process.env.PORT || 3001;
-
+console.log('Antes da conexão server')
 io.on('connection', (socket) => {
+  console.log('Após a conexão server')
   console.log('Usuário conectado!', socket.id);
 
   socket.on('disconnect', (reason) => {
@@ -20,6 +21,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('message', (text) => {
+    console.log('Recebi as mensagens no server')
     io.emit('receive_message', {
       text,
       authorId: socket.id,
