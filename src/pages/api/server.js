@@ -1,27 +1,33 @@
-const app = require('express')
-const server = require('http').createServer(app)
-const io = require('socket.io')(server, {cors: {origin: '*'}})
+const express = require('express');
+const http = require('http');
+const socketIO = require('socket.io');
 
-const PORT = 3001
+require('dotenv').config();
 
-io.on('connection', socket => {
-  console.log('Usuário conectado!', socket.id)
+const app = express();
+const server = http.createServer(app);
+const io = socketIO(server, { cors: { origin: '*' } });
 
-  socket.on('disconnect', reason => {
-    console.log('Usuário desconectado!', socket.id)
-  })
+const PORT = process.env.PORT || 3001;
 
-  socket.on('set_username', name => {
-    socket.data.name = name
-  })
+io.on('connection', (socket) => {
+  console.log('Usuário conectado!', socket.id);
 
-  socket.on('message', text => {
+  socket.on('disconnect', (reason) => {
+    console.log('Usuário desconectado!', socket.id);
+  });
+
+  socket.on('set_username', (name) => {
+    socket.data.name = name;
+  });
+
+  socket.on('message', (text) => {
     io.emit('receive_message', {
       text,
       authorId: socket.id,
-      author: socket.data.name
-    })
-  })
-})
+      author: socket.data.name,
+    });
+  });
+});
 
-server.listen(PORT, () => console.log('Server running...'))
+server.listen(PORT, () => console.log('Server running...'));
