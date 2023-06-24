@@ -6,11 +6,19 @@ export default function Join({ setChatVisibility, setSocket }) {
   const [name, setName] = useState("");
 
   const handleSubmit = async () => {
+    console.log('Iniciando')
     if (!name.trim()) return;
-    const socket = await io.connect(`${process.env.NEXT_PUBLIC_SERVER_URL}`);
-    socket.emit("set_username", name);
-    setSocket(socket);
-    setChatVisibility(true);
+    try {
+      console.log('Iniciando 2');
+      console.log(process.env.NEXT_PUBLIC_SERVER_URL)
+      const socket = await io.connect(`${process.env.NEXT_PUBLIC_SERVER_URL}`);
+      console.log(socket)
+      socket.emit("set_username", name);
+      setSocket(socket);
+      setChatVisibility(true);
+    } catch (e) {
+      console.log(e.message);
+    }
   };
 
   return (
